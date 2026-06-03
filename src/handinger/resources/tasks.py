@@ -54,7 +54,6 @@ class TasksResource(SyncAPIResource):
         *,
         input: str,
         budget: Literal["low", "standard", "high", "unlimited"] | Omit = omit,
-        stream: bool | Omit = omit,
         task_id: str | Omit = omit,
         worker_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -64,19 +63,18 @@ class TasksResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Worker:
-        """Run a new task against an existing worker.
+        """Run a new task against an existing worker and wait for the result.
 
-        Send a `taskId` of a prior task to
-        add a follow-up turn instead of starting a fresh task. Send
-        `multipart/form-data` to attach files; the bytes are bootstrapped into the
-        worker's workspace before the task starts.
+        Send a
+        `taskId` of a prior task to add a follow-up turn instead of starting a fresh
+        task. Send `multipart/form-data` to attach files; the bytes are bootstrapped
+        into the worker's workspace before the task starts. The task runs to completion
+        on the server even if the connection drops; subscribe to task webhooks for
+        long-running tasks.
 
         Args:
           budget: Compute budget the worker is allowed to spend on the task. Defaults to
               `standard`.
-
-          stream: Stream the response as server-sent events instead of waiting for the final
-              payload.
 
           task_id: Optional client-provided task id. Reuse this id to add turns to an existing
               task.
@@ -96,7 +94,6 @@ class TasksResource(SyncAPIResource):
             {
                 "input": input,
                 "budget": budget,
-                "stream": stream,
                 "task_id": task_id,
                 "worker_id": worker_id,
             },
@@ -214,7 +211,6 @@ class AsyncTasksResource(AsyncAPIResource):
         *,
         input: str,
         budget: Literal["low", "standard", "high", "unlimited"] | Omit = omit,
-        stream: bool | Omit = omit,
         task_id: str | Omit = omit,
         worker_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -224,19 +220,18 @@ class AsyncTasksResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Worker:
-        """Run a new task against an existing worker.
+        """Run a new task against an existing worker and wait for the result.
 
-        Send a `taskId` of a prior task to
-        add a follow-up turn instead of starting a fresh task. Send
-        `multipart/form-data` to attach files; the bytes are bootstrapped into the
-        worker's workspace before the task starts.
+        Send a
+        `taskId` of a prior task to add a follow-up turn instead of starting a fresh
+        task. Send `multipart/form-data` to attach files; the bytes are bootstrapped
+        into the worker's workspace before the task starts. The task runs to completion
+        on the server even if the connection drops; subscribe to task webhooks for
+        long-running tasks.
 
         Args:
           budget: Compute budget the worker is allowed to spend on the task. Defaults to
               `standard`.
-
-          stream: Stream the response as server-sent events instead of waiting for the final
-              payload.
 
           task_id: Optional client-provided task id. Reuse this id to add turns to an existing
               task.
@@ -256,7 +251,6 @@ class AsyncTasksResource(AsyncAPIResource):
             {
                 "input": input,
                 "budget": budget,
-                "stream": stream,
                 "task_id": task_id,
                 "worker_id": worker_id,
             },
