@@ -18,12 +18,6 @@ class TaskCreateParams(TypedDict, total=False):
     Defaults to `standard`.
     """
 
-    stream: bool
-    """
-    Stream the response as server-sent events instead of waiting for the final
-    payload.
-    """
-
     task_id: Annotated[str, PropertyInfo(alias="taskId")]
     """Optional client-provided task id.
 

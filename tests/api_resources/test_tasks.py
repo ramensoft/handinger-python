@@ -31,7 +31,6 @@ class TestTasks:
         task = client.tasks.create(
             input="What's the weather today in Barcelona?",
             budget="standard",
-            stream=False,
             task_id="tsk_2Z-YWz3hFq6VlW",
             worker_id="wrk_vk81XUHKHG-qr4",
         )
@@ -167,7 +166,6 @@ class TestAsyncTasks:
         task = await async_client.tasks.create(
             input="What's the weather today in Barcelona?",
             budget="standard",
-            stream=False,
             task_id="tsk_2Z-YWz3hFq6VlW",
             worker_id="wrk_vk81XUHKHG-qr4",
         )
