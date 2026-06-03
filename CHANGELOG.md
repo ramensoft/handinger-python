@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.24.0 (2026-06-03)
+
+Full Changelog: [v0.23.0...v0.24.0](https://github.com/ramensoft/handinger-python/compare/v0.23.0...v0.24.0)
+
+### Features
+
+* Refactor task chat to use WebSocket agent connection ([7afc915](https://github.com/ramensoft/handinger-python/commit/7afc915cb890b266e94ad39cc2296221fa9cf25f))
+
 ## 0.23.0 (2026-05-15)
 
 Full Changelog: [v0.22.0...v0.23.0](https://github.com/ramensoft/handinger-python/compare/v0.22.0...v0.23.0)
