@@ -145,7 +145,7 @@ class WorkersResource(SyncAPIResource):
         self,
         worker_id: str,
         *,
-        stream: Literal["true", "false"] | Omit = omit,
+        task_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -154,14 +154,12 @@ class WorkersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Worker:
         """
-        Retrieve the current worker state and messages from its most recent task.
-        Returns a JSON worker object by default, or a server-sent event stream when
-        `stream=true`.
+        Retrieve the current worker state and messages from its most recent task (or a
+        specific task via `taskId`).
 
         Args:
-          stream: Set to "true" to receive a server-sent event stream that replays all stored
-              messages and then continues with live chunks from the active task (if any)
-              before closing.
+          task_id: Return the worker state and messages for a specific task instead of the most
+              recent one.
 
           extra_headers: Send extra headers
 
@@ -180,7 +178,7 @@ class WorkersResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"stream": stream}, worker_retrieve_params.WorkerRetrieveParams),
+                query=maybe_transform({"task_id": task_id}, worker_retrieve_params.WorkerRetrieveParams),
             ),
             cast_to=Worker,
         )
@@ -419,7 +417,7 @@ class AsyncWorkersResource(AsyncAPIResource):
         self,
         worker_id: str,
         *,
-        stream: Literal["true", "false"] | Omit = omit,
+        task_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -428,14 +426,12 @@ class AsyncWorkersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Worker:
         """
-        Retrieve the current worker state and messages from its most recent task.
-        Returns a JSON worker object by default, or a server-sent event stream when
-        `stream=true`.
+        Retrieve the current worker state and messages from its most recent task (or a
+        specific task via `taskId`).
 
         Args:
-          stream: Set to "true" to receive a server-sent event stream that replays all stored
-              messages and then continues with live chunks from the active task (if any)
-              before closing.
+          task_id: Return the worker state and messages for a specific task instead of the most
+              recent one.
 
           extra_headers: Send extra headers
 
@@ -454,7 +450,7 @@ class AsyncWorkersResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"stream": stream}, worker_retrieve_params.WorkerRetrieveParams),
+                query=await async_maybe_transform({"task_id": task_id}, worker_retrieve_params.WorkerRetrieveParams),
             ),
             cast_to=Worker,
         )

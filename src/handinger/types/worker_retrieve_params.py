@@ -2,15 +2,16 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, TypedDict
+from typing_extensions import Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = ["WorkerRetrieveParams"]
 
 
 class WorkerRetrieveParams(TypedDict, total=False):
-    stream: Literal["true", "false"]
+    task_id: Annotated[str, PropertyInfo(alias="taskId")]
     """
-    Set to "true" to receive a server-sent event stream that replays all stored
-    messages and then continues with live chunks from the active task (if any)
-    before closing.
+    Return the worker state and messages for a specific task instead of the most
+    recent one.
     """

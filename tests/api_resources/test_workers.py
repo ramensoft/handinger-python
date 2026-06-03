@@ -80,7 +80,7 @@ class TestWorkers:
     def test_method_retrieve_with_all_params(self, client: Handinger) -> None:
         worker = client.workers.retrieve(
             worker_id="t_org_123_w_01HZY2ZJQ8G7K42W2D7WF6V4GM",
-            stream="true",
+            task_id="x",
         )
         assert_matches_type(Worker, worker, path=["response"])
 
@@ -325,7 +325,7 @@ class TestAsyncWorkers:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncHandinger) -> None:
         worker = await async_client.workers.retrieve(
             worker_id="t_org_123_w_01HZY2ZJQ8G7K42W2D7WF6V4GM",
-            stream="true",
+            task_id="x",
         )
         assert_matches_type(Worker, worker, path=["response"])
 
