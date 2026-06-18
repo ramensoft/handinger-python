@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.24.1 (2026-06-18)
+
+Full Changelog: [v0.24.0...v0.24.1](https://github.com/ramensoft/handinger-python/compare/v0.24.0...v0.24.1)
+
+### Bug Fixes
+
+* **auth:** prioritize first auth header ([9e28502](https://github.com/ramensoft/handinger-python/commit/9e285023509328882697e293eadadd35ab293566))
+
 ## 0.24.0 (2026-06-03)
 
 Full Changelog: [v0.23.0...v0.24.0](https://github.com/ramensoft/handinger-python/compare/v0.23.0...v0.24.0)
