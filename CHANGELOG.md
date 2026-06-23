@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.25.0 (2026-06-23)
+
+Full Changelog: [v0.24.1...v0.25.0](https://github.com/ramensoft/handinger-python/compare/v0.24.1...v0.25.0)
+
+### Features
+
+* **api:** add files field and TurnFile model to Turn ([c8bc143](https://github.com/ramensoft/handinger-python/commit/c8bc14324ef5ecc4d344a16c0764e51201ac7017))
+
 ## 0.24.1 (2026-06-18)
 
 Full Changelog: [v0.24.0...v0.24.1](https://github.com/ramensoft/handinger-python/compare/v0.24.0...v0.24.1)
