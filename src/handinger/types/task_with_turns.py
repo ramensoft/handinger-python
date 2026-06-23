@@ -7,7 +7,17 @@ from pydantic import Field as FieldInfo
 from .task import Task
 from .._models import BaseModel
 
-__all__ = ["TaskWithTurns", "Turn"]
+__all__ = ["TaskWithTurns", "Turn", "TurnFile"]
+
+
+class TurnFile(BaseModel):
+    filename: Optional[str] = None
+
+    media_type: str = FieldInfo(alias="mediaType")
+
+    url: str
+
+    size: Optional[int] = None
 
 
 class Turn(BaseModel):
@@ -18,6 +28,9 @@ class Turn(BaseModel):
     credits: int
 
     duration_ms: int = FieldInfo(alias="durationMs")
+
+    files: List[TurnFile]
+    """Files published by this turn."""
 
     input: str
 
