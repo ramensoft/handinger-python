@@ -56,11 +56,19 @@ Methods:
 Types:
 
 ```python
-from handinger.types import CreateTask, DeleteTaskResponse, Task, TaskWithTurns
+from handinger.types import (
+    CreateTask,
+    DeleteTaskResponse,
+    Task,
+    TaskTurnList,
+    Turn,
+    TaskRetrieveResponse,
+)
 ```
 
 Methods:
 
 - <code title="post /api/tasks">client.tasks.<a href="./src/handinger/resources/tasks.py">create</a>(\*\*<a href="src/handinger/types/task_create_params.py">params</a>) -> <a href="./src/handinger/types/worker.py">Worker</a></code>
-- <code title="get /api/tasks/{taskId}">client.tasks.<a href="./src/handinger/resources/tasks.py">retrieve</a>(task_id) -> <a href="./src/handinger/types/task_with_turns.py">TaskWithTurns</a></code>
+- <code title="get /api/tasks/{taskId}">client.tasks.<a href="./src/handinger/resources/tasks.py">retrieve</a>(task_id) -> <a href="./src/handinger/types/task_retrieve_response.py">TaskRetrieveResponse</a></code>
 - <code title="delete /api/tasks/{taskId}">client.tasks.<a href="./src/handinger/resources/tasks.py">delete</a>(task_id) -> <a href="./src/handinger/types/delete_task_response.py">DeleteTaskResponse</a></code>
+- <code title="get /api/tasks/{taskId}/turns">client.tasks.<a href="./src/handinger/resources/tasks.py">list_turns</a>(task_id) -> <a href="./src/handinger/types/task_turn_list.py">TaskTurnList</a></code>

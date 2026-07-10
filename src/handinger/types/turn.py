@@ -4,13 +4,12 @@ from typing import Dict, List, Optional
 
 from pydantic import Field as FieldInfo
 
-from .task import Task
 from .._models import BaseModel
 
-__all__ = ["TaskWithTurns", "Turn", "TurnFile"]
+__all__ = ["Turn", "File"]
 
 
-class TurnFile(BaseModel):
+class File(BaseModel):
     filename: Optional[str] = None
 
     media_type: str = FieldInfo(alias="mediaType")
@@ -29,7 +28,7 @@ class Turn(BaseModel):
 
     duration_ms: int = FieldInfo(alias="durationMs")
 
-    files: List[TurnFile]
+    files: List[File]
     """Files published by this turn."""
 
     input: str
@@ -55,9 +54,3 @@ class Turn(BaseModel):
     """
 
     task_id: str = FieldInfo(alias="taskId")
-
-
-class TaskWithTurns(BaseModel):
-    task: Task
-
-    turns: List[Turn]
