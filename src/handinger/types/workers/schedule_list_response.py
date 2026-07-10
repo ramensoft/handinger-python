@@ -13,4 +13,6 @@ __all__ = ["ScheduleListResponse"]
 class ScheduleListResponse(BaseModel):
     schedules: List[WorkerSchedule]
 
+    timezone: str
+
     worker_id: str = FieldInfo(alias="workerId")
