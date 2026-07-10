@@ -50,8 +50,6 @@ class Source(BaseModel):
 
 
 class Usage(BaseModel):
-    credits: Optional[int] = None
-
     duration_ms: Optional[int] = FieldInfo(alias="durationMs", default=None)
 
 
