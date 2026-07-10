@@ -21,8 +21,9 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.worker import Worker
-from ..types.task_with_turns import TaskWithTurns
+from ..types.task_turn_list import TaskTurnList
 from ..types.delete_task_response import DeleteTaskResponse
+from ..types.task_retrieve_response import TaskRetrieveResponse
 
 __all__ = ["TasksResource", "AsyncTasksResource"]
 
@@ -125,9 +126,9 @@ class TasksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TaskWithTurns:
+    ) -> TaskRetrieveResponse:
         """
-        Retrieve a single task and its individual turns.
+        Retrieve a single task.
 
         Args:
           extra_headers: Send extra headers
@@ -145,7 +146,7 @@ class TasksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TaskWithTurns,
+            cast_to=TaskRetrieveResponse,
         )
 
     def delete(
@@ -181,6 +182,39 @@ class TasksResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=DeleteTaskResponse,
+        )
+
+    def list_turns(
+        self,
+        task_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> TaskTurnList:
+        """
+        List the individual turns for a task in execution order.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not task_id:
+            raise ValueError(f"Expected a non-empty value for `task_id` but received {task_id!r}")
+        return self._get(
+            path_template("/api/tasks/{task_id}/turns", task_id=task_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TaskTurnList,
         )
 
 
@@ -282,9 +316,9 @@ class AsyncTasksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> TaskWithTurns:
+    ) -> TaskRetrieveResponse:
         """
-        Retrieve a single task and its individual turns.
+        Retrieve a single task.
 
         Args:
           extra_headers: Send extra headers
@@ -302,7 +336,7 @@ class AsyncTasksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TaskWithTurns,
+            cast_to=TaskRetrieveResponse,
         )
 
     async def delete(
@@ -340,6 +374,39 @@ class AsyncTasksResource(AsyncAPIResource):
             cast_to=DeleteTaskResponse,
         )
 
+    async def list_turns(
+        self,
+        task_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> TaskTurnList:
+        """
+        List the individual turns for a task in execution order.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not task_id:
+            raise ValueError(f"Expected a non-empty value for `task_id` but received {task_id!r}")
+        return await self._get(
+            path_template("/api/tasks/{task_id}/turns", task_id=task_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TaskTurnList,
+        )
+
 
 class TasksResourceWithRawResponse:
     def __init__(self, tasks: TasksResource) -> None:
@@ -353,6 +420,9 @@ class TasksResourceWithRawResponse:
         )
         self.delete = to_raw_response_wrapper(
             tasks.delete,
+        )
+        self.list_turns = to_raw_response_wrapper(
+            tasks.list_turns,
         )
 
 
@@ -369,6 +439,9 @@ class AsyncTasksResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             tasks.delete,
         )
+        self.list_turns = async_to_raw_response_wrapper(
+            tasks.list_turns,
+        )
 
 
 class TasksResourceWithStreamingResponse:
@@ -384,6 +457,9 @@ class TasksResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             tasks.delete,
         )
+        self.list_turns = to_streamed_response_wrapper(
+            tasks.list_turns,
+        )
 
 
 class AsyncTasksResourceWithStreamingResponse:
@@ -398,4 +474,7 @@ class AsyncTasksResourceWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             tasks.delete,
+        )
+        self.list_turns = async_to_streamed_response_wrapper(
+            tasks.list_turns,
         )
