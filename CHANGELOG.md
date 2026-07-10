@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.26.0 (2026-07-10)
+
+Full Changelog: [v0.25.1...v0.26.0](https://github.com/ramensoft/handinger-python/compare/v0.25.1...v0.26.0)
+
+### Features
+
+* **api:** add timezone field to workers schedule list response ([d12a515](https://github.com/ramensoft/handinger-python/commit/d12a515821df7ad7ed71a059c0b1792062270c32))
+
 ## 0.25.1 (2026-07-10)
 
 Full Changelog: [v0.25.0...v0.25.1](https://github.com/ramensoft/handinger-python/compare/v0.25.0...v0.25.1)
