@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.25.1 (2026-07-10)
+
+Full Changelog: [v0.25.0...v0.25.1](https://github.com/ramensoft/handinger-python/compare/v0.25.0...v0.25.1)
+
+### Bug Fixes
+
+* **types:** remove credits field from worker Usage model ([843a5bd](https://github.com/ramensoft/handinger-python/commit/843a5bd60eb26de36ea72a3aa3671c3c7e26c78a))
+
 ## 0.25.0 (2026-06-23)
 
 Full Changelog: [v0.24.1...v0.25.0](https://github.com/ramensoft/handinger-python/compare/v0.24.1...v0.25.0)
