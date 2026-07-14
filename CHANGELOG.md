@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.26.1 (2026-07-14)
+
+Full Changelog: [v0.26.0...v0.26.1](https://github.com/ramensoft/handinger-python/compare/v0.26.0...v0.26.1)
+
+### Bug Fixes
+
+* **internal:** resolve build failures ([a237da4](https://github.com/ramensoft/handinger-python/commit/a237da49b1bbe29a816004f6b7f011f0ce97ccb5))
+
 ## 0.26.0 (2026-07-10)
 
 Full Changelog: [v0.25.1...v0.26.0](https://github.com/ramensoft/handinger-python/compare/v0.25.1...v0.26.0)
