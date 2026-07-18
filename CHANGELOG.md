@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.27.0 (2026-07-18)
+
+Full Changelog: [v0.26.1...v0.27.0](https://github.com/ramensoft/handinger-python/compare/v0.26.1...v0.27.0)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([a69c35e](https://github.com/ramensoft/handinger-python/commit/a69c35ed393f44047454c6470fe4b66d4456c5cf))
+
 ## 0.26.1 (2026-07-14)
 
 Full Changelog: [v0.26.0...v0.26.1](https://github.com/ramensoft/handinger-python/compare/v0.26.0...v0.26.1)
